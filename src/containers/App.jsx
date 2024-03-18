@@ -6,16 +6,18 @@ import CarouselItem from "../components/CarouselItem";
 import "../assets/styles/App.scss";
 
 import { connect } from "react-redux";
+import Header from "../components/Header";
 
-const App = ({myList, trends, originals}) => {
+const App = ({ myList, trends, originals }) => {
   return (
     <>
-      <Search />
+      <Header />
+      <Search isHome />
       {myList.length > 0 && (
         <Categories title="Mi Lista">
           <Carousel>
             {myList.map((item) => (
-              <CarouselItem key={item.id} {...item} />
+              <CarouselItem key={item.id} {...item} isList/>
             ))}
           </Carousel>
         </Categories>

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./routes/App";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
-import { createStore } from "redux";
+import { compose, createStore } from "redux";
 
 const initialState = {
   myList: [],
@@ -169,7 +169,11 @@ const initialState = {
   ],
 };
 
-const store = createStore(reducer, initialState);
+const composeEnhancers =
+  window.__REDUX_DEVTOOLS_EXTENSION__ || compose;
+
+const store = createStore(reducer, initialState, composeEnhancers());
+
 
 ReactDOM.render(
   <Provider store={store}>
